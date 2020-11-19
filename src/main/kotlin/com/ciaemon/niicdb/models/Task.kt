@@ -1,12 +1,10 @@
 package com.ciaemon.niicdb.models
 
-import javax.persistence.*
+import javax.persistence.Entity
+import javax.persistence.ManyToOne
 
 @Entity(name = "tasks")
 class Task(
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        var id: Long,
         @ManyToOne
         var preparation: User,
         @ManyToOne
@@ -30,4 +28,4 @@ class Task(
         @ManyToOne
         var deposition: User,
         var needToStore: Boolean
-)
+) : AbstractEntity()

@@ -1,10 +1,12 @@
 package com.ciaemon.niicdb.models
 
-import javax.persistence.*
+import javax.persistence.CascadeType
+import javax.persistence.Embedded
+import javax.persistence.Entity
+import javax.persistence.ManyToOne
 
 @Entity(name = "persons")
 class Person(
-        @Id @GeneratedValue var id: Long = 0,
         var name: String = "Operator",
         var surname: String = "",
         var middleName: String = "",
@@ -14,4 +16,4 @@ class Person(
         var contacts: Contacts = Contacts(),
         @ManyToOne(optional = true)
         var supervisor: Person? = null
-)
+) : AbstractEntity()

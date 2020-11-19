@@ -5,14 +5,11 @@ import javax.persistence.*
 
 @Entity (name = "probes")
 class Probe(
-        @Id
-        @GeneratedValue
-        var id: Long = 0,
         @Temporal(TemporalType.DATE)
         var reqDate: Date = Date(),
         var cifer: String = "cifer",
         @ManyToOne
-        var user_id: User = User(),
+        var user_id: User,
         var appearance: String = "appearance",
         var container: String = "container",
         var solvent: String = "solvent",
@@ -24,7 +21,7 @@ class Probe(
         @Enumerated(EnumType.STRING) var submitType: SubmitType = SubmitType.BEFORE,
         @Enumerated(EnumType.STRING) var storageType: StorageType = StorageType.NO_SPECIAL_CONDITIONS,
         @Enumerated(EnumType.STRING) var presenceType: PresenceType = PresenceType.OPTIONAL,
-)
+) : AbstractEntity()
 
 enum class SubmitType {
         BEFORE,

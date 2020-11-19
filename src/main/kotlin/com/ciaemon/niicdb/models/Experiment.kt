@@ -5,9 +5,6 @@ import javax.persistence.*
 
 @Entity
 class Experiment(
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        var id: Long,
         @Temporal(TemporalType.TIMESTAMP)
         var startTime: Date,
         @Temporal(TemporalType.TIMESTAMP)
@@ -22,7 +19,8 @@ class Experiment(
         var framesNumber: Int,
         var storage: String,
 
-) {
+) : AbstractEntity()
+{
         fun duration(): Int = ((endTime.time - startTime.time) / 3_600_000).toInt()
 }
 
