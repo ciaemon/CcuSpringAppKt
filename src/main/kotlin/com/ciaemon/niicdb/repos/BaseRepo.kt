@@ -1,6 +1,7 @@
 package com.ciaemon.niicdb.repos
 
 import org.springframework.data.repository.CrudRepository
+import org.springframework.data.repository.NoRepositoryBean
 
-interface BaseRepo<T> : CrudRepository<T, Long> {
-}
+@NoRepositoryBean
+interface BaseRepo<T> : CrudRepository<T, Long>

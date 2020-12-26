@@ -6,6 +6,6 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional
-class CellFinder(private val repo: CellRepo) {
+class UserSearch(private val cellRepo: CellRepo) {
 
 }

@@ -15,6 +15,7 @@ allOpen {
     annotation("javax.persistence.MappedSuperclass")
 }
 
+
 group = "com.ciaemon"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -33,12 +34,14 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     implementation("org.thymeleaf:thymeleaf-spring5")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-//    runtimeOnly("com.h2database:h2")
-    runtimeOnly("mysql:mysql-connector-java")
+    runtimeOnly("com.h2database:h2")
+//    runtimeOnly("mysql:mysql-connector-java")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
+    testImplementation("org.mockito:mockito-core")
+
 }
 
 tasks.withType<Test> {

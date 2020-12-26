@@ -6,8 +6,8 @@ import javax.persistence.OneToOne
 
 @Entity(name = "users")
 class User(
-        var login: String = "",
-        var password: String = "",
+        val username: String,
+        private val password: String,
         @OneToOne
         @JoinColumn(name = "person_id")
         var person: Person,
