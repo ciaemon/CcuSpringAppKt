@@ -1,5 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
+val kotlinVersion = "1.3.72"
 plugins {
     id("org.springframework.boot") version "2.3.4.RELEASE"
     id("io.spring.dependency-management") version "1.0.10.RELEASE"
@@ -8,6 +8,7 @@ plugins {
     kotlin("plugin.spring") version "1.3.72"
     kotlin("plugin.jpa") version "1.3.72"
     kotlin("plugin.allopen") version "1.3.61"
+
 }
 allOpen {
     annotation("javax.persistence.Entity")
@@ -25,6 +26,7 @@ repositories {
 }
 
 dependencies {
+
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -34,6 +36,7 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     implementation("org.thymeleaf:thymeleaf-spring5")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5:")
     runtimeOnly("com.h2database:h2")
 //    runtimeOnly("mysql:mysql-connector-java")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
