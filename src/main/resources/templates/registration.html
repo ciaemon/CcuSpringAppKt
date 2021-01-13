@@ -5,12 +5,32 @@
     <title>Register a new user</title>
 </head>
 <body>
+<div th:replace="fragments :: header"></div>
 
-<form th:action="@{/registration}" th:method="POST" th:object="${user}">
-    <label for="username">User name</label><input id="username" type="text" th:field="*{username}">
-    <label for="password">Password</label><input id="password" type="password" th:field="*{password_encoded}">
-    <input type="submit">
-</form>
+<div class="registration">
+    <h1 class="registration-title">Register</h1>
+    <form th:action="@{/registration}" th:method="POST" th:object="${cred}" class="registration-form">
+        <label for="username">Email: </label><input type="email" th:field="*{username}" id="username">
+        <label for="password"></label><input type="password" th:field="*{password}" id="password" onchange="comparePasswords()">
+        <label for="password-confirm"></label><input type="password" th:field="*{passwordPrompt}" id="password-confirm" onchange="comparePasswords()">
+        <input type="submit" disabled="disabled" id="submit">
+        <script>
+            function comparePasswords() {
+                const password = document.getElementById('password');
+                const passwordPrompt = document.getElementById('password-confirm');
+                const btn = document.getElementById('submit')
+                if (password.textContent === passwordPrompt.textContent && password.textContent.length > 5) {
+                  btn.removeAttribute('disabled')
+                }
+                else {
+                    btn.setAttribute('disabled', 'disabled')
+                }
 
+            }
+        </script>
+    </form>
+</div>
+
+<div th:replace="fragments :: footer"></div>
 </body>
 </html>

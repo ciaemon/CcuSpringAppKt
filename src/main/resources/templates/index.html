@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>CCU DB Main page</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{style.css}">
+</head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+
+<h1 class="title">Welcome to the main page of this portal!</h1>
+
+<div th:replace="~{fragments :: footer}"></div>
+</body>
+</html>

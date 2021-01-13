@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping
 @Controller
 class MainPageController {
     @GetMapping
-    fun helloPage(): String = "hello"
+    fun helloPage(): String = "index"
 
 
 

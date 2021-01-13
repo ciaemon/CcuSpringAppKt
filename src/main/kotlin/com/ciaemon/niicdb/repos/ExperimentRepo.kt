@@ -1,5 +1,5 @@
 package com.ciaemon.niicdb.repos
 
-import com.ciaemon.niicdb.models.Experiment
+import com.ciaemon.niicdb.entities.Experiment
 
 interface ExperimentRepo : BaseRepo<Experiment>

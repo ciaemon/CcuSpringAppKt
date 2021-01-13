@@ -1,15 +1,14 @@
-package com.ciaemon.niicdb.models
+package com.ciaemon.niicdb.entities
 
 import org.springframework.data.util.ProxyUtils
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.MappedSuperclass
+import javax.persistence.*
 
 @MappedSuperclass
 abstract class AbstractEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null
+    val id: Long? = null
+    @Column
+    var isRemoved = false
 
     override fun equals(other: Any?): Boolean {
         other ?: return false

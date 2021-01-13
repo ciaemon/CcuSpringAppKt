@@ -5,13 +5,22 @@
     <title>Login page</title>
 </head>
 <body>
-<h1>Log into account</h1>
-<form th:action="@{login_process}" method="POST">
-    <label for="username">Username </label><input type="text" name="username" id="username">
-    <label for="password">Password </label><input type="password" name="password" id="password">
-    <input type="submit" name="submit" value="submit">
+    <div th:replace="~{fragments :: header}"></div>
+    <h1 class="title">Log into account</h1>
+    <div class="form">
+        <form th:action="@{login_process}" method="POST">
+            <div>
+                <label for="username" class="form-label">Username: </label>
+                <input type="text" name="username" id="username" class="form-input"></div>
+            <div>
+                <label for="password" class="form-label">Password: </label>
+                <input type="password" name="password" id="password" class="form-input"></div>
+            <div>
+                <input type="submit" name="submit" value="Login" class="form-submit">
+            </div>
+        </form>
+    </div>
 
-</form>
-<p> </p>
+<div th:replace="~{fragments :: footer}"></div>
 </body>
 </html>

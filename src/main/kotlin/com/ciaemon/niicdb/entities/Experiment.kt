@@ -1,19 +1,21 @@
-package com.ciaemon.niicdb.models
+package com.ciaemon.niicdb.entities
 
 import java.util.*
 import javax.persistence.*
+import javax.validation.constraints.PastOrPresent
 
 @Entity
 class Experiment(
         @Temporal(TemporalType.TIMESTAMP)
-        var startTime: Date,
+        @PastOrPresent
+        val startTime: Date,
         @Temporal(TemporalType.TIMESTAMP)
-        var endTime: Date,
+        val endTime: Date,
         @ManyToOne
         var sample: Sample,
         @ManyToOne
-        var cell: Cell,
-        var resolutionMin: Double,
+        var cell: Cell? = null,
+        var resolutionMin: Double = 10.0,
         @Enumerated(EnumType.STRING)
         var diffractionType: DiffractionType,
         var framesNumber: Int,

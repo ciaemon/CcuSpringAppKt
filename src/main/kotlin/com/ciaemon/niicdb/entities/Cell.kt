@@ -1,8 +1,10 @@
-package com.ciaemon.niicdb.models
+package com.ciaemon.niicdb.entities
 
 import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
+import javax.validation.constraints.Max
+import javax.validation.constraints.Positive
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.pow
@@ -11,13 +13,13 @@ import kotlin.math.sqrt
 
 @Entity(name = "cells")
 class Cell(
-        @Enumerated(EnumType.STRING) var crystalSystem: CrystalSystem,
-        var a: Double = 0.0,
-        var b: Double = 0.0,
-        var c: Double = 0.0,
-        var alpha: Double = 90.0,
-        var beta: Double = 90.0,
-        var gamma: Double = 90.0,
+    @Positive var a: Double = 0.0,
+    @Positive var b: Double = 0.0,
+    @Positive var c: Double = 0.0,
+    @Positive @Max(180) var alpha: Double = 90.0,
+    @Positive @Max(180) var beta: Double = 90.0,
+    @Positive @Max(180) var gamma: Double = 90.0,
+    @Enumerated(EnumType.STRING) var crystalSystem: CrystalSystem = CrystalSystem.TRICLINIC,
 ) : AbstractEntity() {
 
     private fun Double.toRad(): Double = this * PI / 180

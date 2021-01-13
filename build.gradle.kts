@@ -36,9 +36,9 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     implementation("org.thymeleaf:thymeleaf-spring5")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5:")
+    implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     runtimeOnly("com.h2database:h2")
-//    runtimeOnly("mysql:mysql-connector-java")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")

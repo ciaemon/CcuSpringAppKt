@@ -1,4 +1,4 @@
-package com.ciaemon.niicdb.models
+package com.ciaemon.niicdb.entities
 
 import javax.persistence.Entity
 

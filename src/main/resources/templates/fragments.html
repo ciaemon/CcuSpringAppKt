@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <div th:fragment="header" class="header">
+        <a class="header-btn" href="index.html" th:href="@{/}">Main page</a>
+        <a class="header-btn" href="login.html" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
+        <a class="header-btn" href="index.html" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a>
+        <a class="header-btn" href="login.html" th:href="@{/registration}" sec:authorize="!isAuthenticated()">Registration</a>
+        <a class="header-btn" href="profile.html" th:href="@{/profile}" sec:authorize="isAuthenticated()">Profile</a>
+    </div>
+    
+    <div th:fragment="footer" class="footer">
+        Powered by ciaemon
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+body {
+    font-size: 16pt;
+}
+.header {
+    margin: 0 auto;
+    text-align: center;
+
+}
+.header-btn {
+    color : #e33737;
+    padding: 3px;
+    margin: 0 auto;
+}
+.header-btn:hover {
+    background-color: azure;
+}
+.footer {
+    text-align: right;
+}

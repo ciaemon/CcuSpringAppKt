@@ -1,4 +1,4 @@
-package com.ciaemon.niicdb.models
+package com.ciaemon.niicdb.entities
 
 import javax.persistence.Entity
 import javax.persistence.ManyToOne
@@ -6,13 +6,13 @@ import javax.persistence.ManyToOne
 @Entity(name = "tasks")
 class Task(
         @ManyToOne
-        var preparation: User,
+        var preparation: User? = null,
         @ManyToOne
-        var microscopy: User,
+        var microscopy: User? = null,
         @ManyToOne
-        var photoShot: User,
+        var photoShot: User? = null,
         @ManyToOne
-        var preExp: User,
+        var preExp: User? = null,
         var preExpTemp: Int = 150,
         @ManyToOne
         var diffDescription: User,

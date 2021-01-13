@@ -1,19 +1,16 @@
-package com.ciaemon.niicdb.models
+package com.ciaemon.niicdb.entities
 
-import javax.persistence.CascadeType
-import javax.persistence.Embedded
-import javax.persistence.Entity
-import javax.persistence.ManyToOne
+import javax.persistence.*
 
 @Entity(name = "persons")
 class Person(
         var name: String = "Operator",
         var surname: String = "",
         var middleName: String = "",
-        @ManyToOne(cascade = [CascadeType.ALL])
+        @ManyToOne(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
         var lab: Lab? = null,
         @Embedded
         var contacts: Contacts = Contacts(),
-        @ManyToOne(optional = true)
+        @ManyToOne(optional = true, fetch = FetchType.LAZY)
         var supervisor: Person? = null
 ) : AbstractEntity()

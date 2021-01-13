@@ -1,12 +1,13 @@
-package com.ciaemon.niicdb.models
+package com.ciaemon.niicdb.entities
 
 import java.util.*
 import javax.persistence.*
+import javax.validation.constraints.PastOrPresent
 
 @Entity (name = "probes")
 class Probe(
         @Temporal(TemporalType.DATE)
-        var reqDate: Date = Date(),
+        @PastOrPresent var reqDate: Date = Date(),
         var cifer: String = "cifer",
         @ManyToOne
         var user_id: User,

@@ -1,6 +1,6 @@
 package com.ciaemon.niicdb.repos
 
-import com.ciaemon.niicdb.models.Institution
+import com.ciaemon.niicdb.entities.Institution
 import org.springframework.stereotype.Repository
 
 @Repository
