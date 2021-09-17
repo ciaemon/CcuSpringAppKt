@@ -6,8 +6,10 @@ import javax.validation.constraints.Email
 
 @Entity(name = "users")
 class User(
-        @Email val username: String = "",
-        @JsonIgnore var password: String = "",
+        @Email
+        val username: String = "",
+        @JsonIgnore
+        var password: String = "",
         @OneToOne(fetch = FetchType.LAZY, optional = true)
         @JoinColumn(name = "person_id")
         var person: Person? = null,

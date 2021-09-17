@@ -17,3 +17,11 @@ body {
 .footer {
     text-align: right;
 }
+.registration-line {
+    width: 50%;
+    align-content: center;
+    margin: auto;
+}
+.registration-line label {
+    width: 200px
+}

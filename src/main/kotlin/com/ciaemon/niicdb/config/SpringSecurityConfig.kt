@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+import org.springframework.security.config.web.servlet.invoke
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import javax.sql.DataSource
@@ -22,32 +23,38 @@ class SpringSecurityConfig(@Autowired private val dataSource: DataSource,
 
 
     override fun configure(auth: AuthenticationManagerBuilder?) {
+
         auth!!.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder())
+
     }
 
     override fun configure(http: HttpSecurity?) {
-
-        http!!.csrf().disable()
-
-        with(http) {
-            authorizeRequests().antMatchers("/", "/login", "logout").permitAll()
-
-            authorizeRequests().antMatchers("user/**").hasRole("USER")
-
-            authorizeRequests().antMatchers("cryst/**").hasRole("CRYSTALLOGRAPHER")
-
-            authorizeRequests().antMatchers("admin/**").hasRole("ADMIN")
-
-            authorizeRequests().and().exceptionHandling().accessDeniedPage("/403")
-
-            authorizeRequests().and().formLogin()
-                .loginProcessingUrl("/login_process")
-                .loginPage("/login")
-                .defaultSuccessUrl("/")
-                .failureUrl("/login?error=true")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/")
+        http {
+            csrf {
+                disable()
+            }
+            authorizeRequests {
+                authorize("/", permitAll)
+                authorize("/login", permitAll)
+                authorize("/registration", permitAll)
+                authorize("/profile", authenticated)
+                authorize("user/**", hasRole("USER"))
+                authorize("crystallographer/**", hasRole("CRYSTALLOGRAPHER"))
+                authorize("admin/**", hasRole("admin"))
+            }
+            exceptionHandling {
+                accessDeniedPage = "/403"
+            }
+            formLogin {
+                loginProcessingUrl = "/login_process"
+                loginPage = "/login"
+                defaultSuccessUrl("/", alwaysUse = false)
+                failureUrl = "/login?error=true"
+            }
+            logout {
+                logoutUrl = "/logout"
+                logoutSuccessUrl = "/"
+            }
         }
     }
 }

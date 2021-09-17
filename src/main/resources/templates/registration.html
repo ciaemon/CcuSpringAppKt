@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/style.css">
     <title>Register a new user</title>
 </head>
 <body>
@@ -9,20 +10,30 @@
 
 <div class="registration">
     <h1 class="registration-title">Register</h1>
-    <form th:action="@{/registration}" th:method="POST" th:object="${cred}" class="registration-form">
-        <label for="username">Email: </label><input type="email" th:field="*{username}" id="username">
-        <label for="password"></label><input type="password" th:field="*{password}" id="password" onchange="comparePasswords()">
-        <label for="password-confirm"></label><input type="password" th:field="*{passwordPrompt}" id="password-confirm" onchange="comparePasswords()">
-        <input type="submit" disabled="disabled" id="submit">
-        <script>
+    <form class="registration-form" th:action="@{/registration}" th:method="POST" th:object="${cred}">
+        <div class="registration-line">
+            <label for="username">Email: </label>
+            <input id="username" th:field="*{username}" type="email">
+        </div>
+        <div class="registration-line">
+            <label for="password"></label>Password:
+            <input id="password" onchange="comparePasswords()" th:field="*{password}" type="password">
+        </div>
+        <div class="registration-line">
+            <label for="password-confirm"></label>Password confirm:
+            <input id="password-confirm" onchange="comparePasswords()" th:field="*{passwordPrompt}" type="password">
+        </div>
+        <div class="registration-line">
+        <input disabled="disabled" id="submit" type="submit">
+        </div>
+        <script type="application/javascript">
             function comparePasswords() {
                 const password = document.getElementById('password');
                 const passwordPrompt = document.getElementById('password-confirm');
                 const btn = document.getElementById('submit')
                 if (password.textContent === passwordPrompt.textContent && password.textContent.length > 5) {
-                  btn.removeAttribute('disabled')
-                }
-                else {
+                    btn.removeAttribute('disabled')
+                } else {
                     btn.setAttribute('disabled', 'disabled')
                 }
 
